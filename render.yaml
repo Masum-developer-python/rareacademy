@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: rareacademy
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn rareacademy.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: rareacademy.onrender.com
